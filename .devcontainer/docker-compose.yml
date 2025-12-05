@@ -1,0 +1,37 @@
+services:
+  owl-course:
+    container_name: owl-course
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace
+      - odoo-data:/var/lib/odoo
+    command: sleep infinity
+    ports:
+      - "8069:8069"
+      - "8071:8071"
+      - "8072:8072"
+    networks:
+      - shared-net
+
+  pgdb17:
+    image: postgres:17.0
+    container_name: pgdb17
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+    volumes:
+      - pgdb17-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - shared-net
+
+volumes:
+  odoo-data:
+  pgdb17-data:
+
+networks:
+  shared-net:
+    driver: bridge
