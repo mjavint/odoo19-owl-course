@@ -1,0 +1,7 @@
+{
+  "extraPaths": [
+    "/workspace/odoo/addons",
+    "/workspace/odoo/odoo/addons",
+    "/workspace/addons"
+  ]
+}
