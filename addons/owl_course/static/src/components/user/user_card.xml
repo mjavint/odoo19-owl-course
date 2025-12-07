@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_course.UserCard">
+        <div class="user-card">
+            <img t-att-src="props.avatar" alt="Avatar" class="user-avatar"/>
+            <div class="user-info">
+                <h3 t-esc="props.name"/>
+                <p class="user-email" t-esc="props.email"/>
+                <span class="user-role badge" t-esc="props.role"/>
+            </div>
+        </div>
+    </t>
+</templates>

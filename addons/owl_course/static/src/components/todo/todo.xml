@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- Template del Formulario -->
+    <t t-name="owl_course.TaskForm">
+        <form class="task-form" t-on-submit="onSubmit">
+            <input type="text" class="form-control" placeholder="Nueva tarea..." t-att-value="state.taskText" t-on-input="onInput"/>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-plus"/>
+                <span>Agregar</span>
+            </button>
+        </form>
+    </t>
+
+    <!-- Template del Item -->
+    <t t-name="owl_course.TaskItem">
+        <li t-att-class="props.task.completed ? 'task-item completed' : 'task-item'">
+            <input type="checkbox" t-att-checked="props.task.completed" t-on-click="() => props.onToggle(props.task.id)"/>
+            <span class="task-text" t-esc="props.task.text"/>
+            <button class="btn btn-sm btn-danger" t-on-click="() => props.onDelete(props.task.id)">
+                <i class="fa fa-trash"/>
+            </button>
+        </li>
+    </t>
+
+    <!-- Template de la Lista -->
+    <t t-name="owl_course.TodoList">
+        <div class="todo-list-widget">
+            <h2>Mi Lista de Tareas</h2>
+
+            <TaskForm onAddTask.bind="addTask"/>
+
+            <div class="task-stats">
+                <span>Total: <t t-esc="totalCount"/>
+                </span>
+                <span>Completadas: <t t-esc="completedCount"/>
+                </span>
+            </div>
+
+            <ul class="tasks">
+                <t t-foreach="state.tasks" t-as="task" t-key="task.id">
+                    <TaskItem task="task" onToggle.bind="toggleTask" onDelete.bind="deleteTask"/>
+                </t>
+            </ul>
+
+            <div t-if="state.tasks.length === 0" class="empty-state">
+                <i class="fa fa-inbox fa-3x"/>
+                <p>No hay tareas. ¡Agrega una!</p>
+            </div>
+        </div>
+    </t>
+
+</templates>

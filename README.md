@@ -32,6 +32,8 @@ psql -h pgdb17 -U postgres -c "CREATE USER odoo WITH PASSWORD 'odoo' CREATEDB NO
 psql -h pgdb17 -U postgres -c "DROP USER IF EXISTS odoo;"
 ```
 
+#### Ciclo de Vida del Componente
+
 Constructor
 ↓
 setup() - Configuración inicial

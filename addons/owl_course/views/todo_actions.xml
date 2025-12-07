@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_todo_list" model="ir.actions.client">
+            <field name="name">Lista de Tareas</field>
+            <field name="tag">owl_course.todo_list</field>
+        </record>
+
+        <menuitem id="menu_todo_list" name="Lista de Tareas" parent="menu_course_component" action="action_todo_list" sequence="14"/>
+
+    </data>
+</odoo>

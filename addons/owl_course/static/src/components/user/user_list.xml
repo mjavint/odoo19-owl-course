@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_course.UserList">
+        <div class="user-list">
+            <h2>Lista de Usuarios</h2>
+            <t t-foreach="users" t-as="user" t-key="user.email">
+                <UserCard name="user.name" email="user.email" role="user.role"/>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -8,6 +8,11 @@
     "depends": ["base", "web"],
     "data": [
         "views/menus.xml",
+        "views/hello_world_actions.xml",
+        "views/user_actions.xml",
+        "views/counter_actions.xml",
+        "views/reloj_actions.xml",
+        "views/todo_actions.xml",
     ],
     "assets": {
         "web.assets_backend": [

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_course.Counter">
+        <div class="counter-widget">
+            <div class="counter-display">
+                <h1 t-esc="state.count"/>
+            </div>
+
+            <div class="counter-buttons">
+                <button class="btn btn-success" t-on-click="increment">
+                    <i class="fa fa-plus"/>
+                    <span>Incrementar</span>
+                </button>
+                <button class="btn btn-secondary" t-on-click="reset">
+                    <i class="fa fa-refresh"/>
+                    <span>Resetear</span>
+                </button>
+                <button class="btn btn-danger" t-on-click="decrement">
+                    <i class="fa fa-minus"/>
+                    <span>Decrementar</span>
+                </button>
+            </div>
+
+            <div class="counter-history" t-if="state.history.length > 0">
+                <h3>Historial</h3>
+                <ul>
+                    <t t-foreach="state.history" t-as="entry" t-key="entry_index">
+                        <li>
+                            <span class="badge" t-attf-class="badge-{{entry.action === 'increment' ? 'success' : 'danger'}}">
+                                <t t-esc="entry.action"/>
+                            </span>
+                            Valor: <t t-esc="entry.value"/>
+                            -                        <small t-esc="entry.timestamp"/>
+                    </li>
+                </t>
+            </ul>
+        </div>
+    </div>
+</t>
+</templates>
