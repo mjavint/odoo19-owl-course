@@ -31,3 +31,27 @@ psql -h pgdb17 -U postgres -c "CREATE USER odoo WITH PASSWORD 'odoo' CREATEDB NO
 ```shell
 psql -h pgdb17 -U postgres -c "DROP USER IF EXISTS odoo;"
 ```
+
+#### Ciclo de Vida del Componente
+
+Constructor
+↓
+setup() - Configuración inicial
+↓
+willStart() - Antes del primer render (async)
+↓
+[Primer Renderizado]
+↓
+mounted() - Después del primer render
+↓
+[Componente activo]
+↓
+willPatch() - Antes de actualizar
+↓
+[Re-renderizado]
+↓
+patched() - Después de actualizar
+↓
+willUnmount() - Antes de destruir
+↓
+destroy() - Componente destruido

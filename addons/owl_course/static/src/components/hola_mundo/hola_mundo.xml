@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_course.HelloWorld">
+        <div class="hello-world">
+            <h1>¡Hola Mundo desde OWL 2!</h1>
+            <p>Este es mi primer componente</p>
+        </div>
+    </t>
+</templates>

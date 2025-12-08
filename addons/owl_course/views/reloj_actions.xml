@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_reloj" model="ir.actions.client">
+            <field name="name">Reloj</field>
+            <field name="tag">owl_course.reloj</field>
+        </record>
+
+        <menuitem id="menu_reloj" name="Reloj" parent="menu_course_component" action="action_reloj" sequence="11"/>
+
+    </data>
+</odoo>

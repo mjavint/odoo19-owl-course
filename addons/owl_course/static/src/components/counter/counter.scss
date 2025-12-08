@@ -1,0 +1,74 @@
+.counter-widget {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.counter-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.counter-display h1 {
+    font-size: 5rem;
+    color: #667eea;
+    margin: 0;
+    font-weight: bold;
+}
+
+.counter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.counter-buttons button {
+    flex: 1;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.counter-buttons button:active {
+    transform: scale(0.95);
+}
+
+.counter-history {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.counter-history h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.counter-history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.counter-history li {
+    padding: 8px;
+    margin: 5px 0;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.badge-success {
+    background: #28a745;
+    color: white;
+}
+
+.badge-danger {
+    background: #dc3545;
+    color: white;
+}

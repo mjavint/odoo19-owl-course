@@ -1,0 +1,144 @@
+.todo-list-widget {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  .task-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .task-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    span {
+      font-weight: 500;
+      color: #666;
+    }
+  }
+
+  .tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      background: #f8f9fa;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #e9ecef;
+        transform: translateX(4px);
+      }
+
+      &.completed {
+        .task-text {
+          text-decoration: line-through;
+          color: #999;
+        }
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .task-text {
+        flex: 1;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      button {
+        padding: 0.5rem 0.75rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        i {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+
+    i {
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+}

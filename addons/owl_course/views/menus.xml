@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_course_root" name="Owl Course" />
+        <menuitem id="menu_course_component" name="Component" parent="menu_course_root" sequence="10"/>
+
+    </data>
+</odoo>

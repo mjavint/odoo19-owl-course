@@ -1,0 +1,60 @@
+.clock-widget {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: white;
+    text-align: center;
+}
+
+.clock-display {
+    margin-bottom: 25px;
+}
+
+.time {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.date {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    text-transform: capitalize;
+}
+
+.clock-controls {
+    margin: 20px 0;
+}
+
+.clock-controls button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
+
+.clock-controls button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.clock-status {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.status-running {
+    color: #90EE90;
+}
+
+.status-stopped {
+    color: #FFB6C1;
+}
