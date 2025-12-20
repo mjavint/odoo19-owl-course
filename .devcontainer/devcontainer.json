@@ -56,8 +56,18 @@
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "[xml]": {
-          "editor.defaultFormatter": "DotJoshJohnson.xml"
-        }
+          "editor.defaultFormatter": "mvintg.odoo-file"
+        },
+        "odooShortcuts.formatter.splitAttributes": true,
+        "odooShortcuts.formatter.maxLineLength": 88,
+        "odooShortcuts.formatter.odooSpacingTags": [
+          "record",
+          "menuitem"
+        ],
+        "odooShortcuts.formatter.excludePatterns": [
+          "**/odoo/**",
+          "**/enterprise/**"
+        ]
       }
     }
   },

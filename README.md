@@ -55,3 +55,21 @@ patched() - Después de actualizar
 willUnmount() - Antes de destruir
 ↓
 destroy() - Componente destruido
+
+#### Registry
+
+Para usarlo, siempre importamos lo mismo:
+```javascript
+import { registry } from "@web/core/registry";
+```
+
+Y la estructura siempre es:
+1. Elegimos la **categoría** (actions, fields, services, etc.).
+2. Usamos el método `.add()`.
+3. Le damos un nombre único y el componente que queremos guardar.
+
+```javascript
+registry.category("categoria").add("nombre_unico", MiComponente);
+```
+¡Es así de simple!"
+
