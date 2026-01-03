@@ -15,11 +15,11 @@ services:
     networks:
       - shared-net
 
-  pgdb17:
+  course-pgdb:
     image: postgres:17.0
-    container_name: pgdb17
+    container_name: course-pgdb
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - POSTGRES_PASSWORD=admin
     volumes:

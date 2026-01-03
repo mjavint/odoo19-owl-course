@@ -4,7 +4,6 @@
   "service": "owl-course",
   "workspaceFolder": "/workspace",
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
   "customizations": {
@@ -21,7 +20,8 @@
         "codezombiech.gitignore",
         "usernamehw.errorlens",
         "formulahendry.auto-complete-tag",
-        "mrorz.language-gettext"
+        "mrorz.language-gettext",
+        "ArthurLobo.easy-codesnap"
       ],
       "settings": {
         "python.languageServer": "None",
@@ -42,9 +42,7 @@
           },
           "editor.defaultFormatter": "charliermarsh.ruff"
         },
-        "python.linting.ignorePatterns": [
-          "/workspace/odoo/**/*.py"
-        ],
+        "python.linting.ignorePatterns": ["/workspace/odoo/**/*.py"],
         "python.linting.pylintArgs": [
           "--init-hook=\"import sys;sys.path.append('/workspace/odoo')\"",
           "--load-plugins=pylint_odoo"
@@ -60,14 +58,8 @@
         },
         "odooShortcuts.formatter.splitAttributes": true,
         "odooShortcuts.formatter.maxLineLength": 88,
-        "odooShortcuts.formatter.odooSpacingTags": [
-          "record",
-          "menuitem"
-        ],
-        "odooShortcuts.formatter.excludePatterns": [
-          "**/odoo/**",
-          "**/enterprise/**"
-        ]
+        "odooShortcuts.formatter.odooSpacingTags": ["record", "menuitem"],
+        "odooShortcuts.formatter.excludePatterns": ["**/odoo/**", "**/enterprise/**"]
       }
     }
   },

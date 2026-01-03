@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_company_dashboard" model="ir.actions.client">
+            <field name="name">Company Dashboard</field>
+            <field name="tag">company_dashboard</field>
+        </record>
+
+        <menuitem
+            id="menu_company_dashboard"
+            name="Company Dashboard"
+            parent="menu_course_component"
+            action="action_company_dashboard" />
+    </data>
+</odoo>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record id="action_hello_world" model="ir.actions.client">
             <field name="name">Hello World OWL 2</field>
             <field name="tag">owl_course.hello_world</field>
         </record>
 
-        <menuitem id="menu_hello_world" name="Hello World OWL 2" parent="menu_course_component" action="action_hello_world"/>
-
+        <menuitem
+            id="menu_hello_world"
+            name="Hello World OWL 2"
+            parent="menu_course_component"
+            action="action_hello_world" />
     </data>
 </odoo>

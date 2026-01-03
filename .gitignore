@@ -10,3 +10,7 @@ wheels/
 .venv
 odoo
 enterprise
+dbs
+ocli*
+resources
+uv.lock

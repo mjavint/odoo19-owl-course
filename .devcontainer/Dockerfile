@@ -1,7 +1,5 @@
 FROM python:3.12-slim-bookworm
 
-SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
-
 # Environment variables
 ENV LANG=en_US.UTF-8 \
     DEBIAN_FRONTEND=noninteractive
@@ -22,6 +20,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     gnupg \
     dirmngr \
     lsb-release \
+    sudo \
     # Editors and shells
     nano \
     vim \
@@ -123,30 +122,39 @@ ENV UV_LINK_MODE=copy \
     PATH="/workspace/.venv/bin:$PATH"
 
 # User configuration arguments
-ARG USERNAME="odoo"
-ARG UID=1001
-ARG GID=$UID
-ARG HOME_USER="/home/$USERNAME"
-ARG ODOO_DATA="/var/lib/odoo"
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=1000
+ARG HOME_USER=/home/$USERNAME
+ARG ODOO_DATA=/var/lib/odoo
 
 # Create odoo user and configure directories
-RUN adduser --disabled-password --gecos "" --uid $UID $USERNAME && \
-    mkdir -p $HOME_USER $ODOO_DATA /commandhistory && \
-    touch /commandhistory/.zsh_history && \
-    chown -R $USERNAME:$USERNAME $HOME_USER $ODOO_DATA /commandhistory
-
-VOLUME ["$ODOO_DATA"]
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd --uid ${USER_UID} --gid ${USER_GID} --create-home --home-dir ${HOME_USER} --shell /bin/zsh ${USERNAME} \
+    && echo "${USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && mkdir -p ${ODOO_DATA} /commandhistory /workspace \
+    && touch /commandhistory/.zsh_history \
+    && chmod -R 755 ${ODOO_DATA} /commandhistory /workspace \
+    && chown -R ${USERNAME}:${USERNAME} ${ODOO_DATA} /commandhistory /workspace
 
 USER $USERNAME
+WORKDIR $HOME_USER
 
-# Install and configure zsh with plugins
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.1/zsh-in-docker.sh)" -- \
-    -t robbyrussell \
-    -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
-    -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
-    -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-completions \
-    -p https://github.com/zsh-users/zsh-syntax-highlighting \
-    -p git && \
-    SNIPPET="autoload -Uz add-zsh-hook; append_history() { fc -W }; add-zsh-hook precmd append_history; export HISTFILE=/commandhistory/.zsh_history" && \
-    echo "$SNIPPET" >> "$HOME_USER/.zshrc"
+# Instalar Oh My Zsh y plugins en una sola capa
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended \
+    && git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
+    && git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions \
+    && sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions sudo uv)/' ~/.zshrc \
+    && SNIPPET="autoload -Uz add-zsh-hook; append_history() { fc -W }; add-zsh-hook precmd append_history; export HISTFILE=/commandhistory/.zsh_history" \
+    && echo "$SNIPPET" >> "$HOME_USER/.zshrc" \
+    && git config --global --add safe.directory '*'
+
+# Exponer volumen para datos persistentes de Odoo
+VOLUME ["$ODOO_DATA"]
+
+# Establecer el directorio de trabajo
+WORKDIR /workspace
+
+# Comando por defecto
+CMD ["sleep", "infinity"]

@@ -1,6 +1,7 @@
 🚀 **Curso completo y gratuito de Owl 2 en Odoo 19**
 [![Lista de Youtube](miniatura.png)](https://www.youtube.com/playlist?list=PLGPKbeX3NwWCJFInep8UOxWisZyVwxTB1)
-Aprende a desarrollar con la biblioteca reactiva OWL 2 en Odoo 19 desde la instalación hasta pruebas unitarias profesionales. 9 clases prácticas.
+Aprende a desarrollar con la biblioteca reactiva OWL 2 en Odoo 19 desde la instalación
+hasta pruebas unitarias profesionales. 9 clases prácticas.
 
 #### 📚 Contenido del Curso:
 
@@ -34,42 +35,7 @@ psql -h pgdb17 -U postgres -c "DROP USER IF EXISTS odoo;"
 
 #### Ciclo de Vida del Componente
 
-Constructor
-↓
-setup() - Configuración inicial
-↓
-willStart() - Antes del primer render (async)
-↓
-[Primer Renderizado]
-↓
-mounted() - Después del primer render
-↓
-[Componente activo]
-↓
-willPatch() - Antes de actualizar
-↓
-[Re-renderizado]
-↓
-patched() - Después de actualizar
-↓
-willUnmount() - Antes de destruir
-↓
-destroy() - Componente destruido
-
-#### Registry
-
-Para usarlo, siempre importamos lo mismo:
-```javascript
-import { registry } from "@web/core/registry";
-```
-
-Y la estructura siempre es:
-1. Elegimos la **categoría** (actions, fields, services, etc.).
-2. Usamos el método `.add()`.
-3. Le damos un nombre único y el componente que queremos guardar.
-
-```javascript
-registry.category("categoria").add("nombre_unico", MiComponente);
-```
-¡Es así de simple!"
-
+Constructor ↓ setup() - Configuración inicial ↓ willStart() - Antes del primer render
+(async) ↓ [Primer Renderizado] ↓ mounted() - Después del primer render ↓ [Componente
+activo] ↓ willPatch() - Antes de actualizar ↓ [Re-renderizado] ↓ patched() - Después de
+actualizar ↓ willUnmount() - Antes de destruir ↓ destroy() - Componente destruido
