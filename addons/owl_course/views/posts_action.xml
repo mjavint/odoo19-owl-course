@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Client Action posts action -->
+    <record id="action_posts_action" model="ir.actions.client">
+        <field name="name">Posts action</field>
+        <field name="tag">posts</field>
+    </record>
+
+    <menuitem
+        id="menu_posts_action"
+        name="Posts Action"
+        parent="menu_course_component"
+        action="action_posts_action" />
+</odoo>
