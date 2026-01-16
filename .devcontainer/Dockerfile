@@ -52,10 +52,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     # Localization and compression
     locales-all \
     xz-utils && \
-    # Install rtlcss globally for RTL language support
-    npm install -g rtlcss && \
-    # Cleanup npm cache
-    npm cache clean --force && \
     # Cleanup apt cache
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -111,6 +107,17 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install rtlcss globally for RTL language support
+RUN npm install -g rtlcss && \
+    # Cleanup npm cache
+    npm cache clean --force
+
+# Install OpenCode CLI
+RUN curl -fsSL https://opencode.ai/install | bash
+
+# Install OpenCode CLI
+RUN curl -fsSL https://opencode.ai/install | bash
+
 # Copy uv binary from official image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
@@ -122,20 +129,20 @@ ENV UV_LINK_MODE=copy \
     PATH="/workspace/.venv/bin:$PATH"
 
 # User configuration arguments
-ARG USERNAME=vscode
+ARG USERNAME=odoo
 ARG USER_UID=1000
-ARG USER_GID=1000
+ARG USER_GID=$USER_UID
 ARG HOME_USER=/home/$USERNAME
 ARG ODOO_DATA=/var/lib/odoo
 
-# Create odoo user and configure directories
-RUN groupadd --gid ${USER_GID} ${USERNAME} \
-    && useradd --uid ${USER_UID} --gid ${USER_GID} --create-home --home-dir ${HOME_USER} --shell /bin/zsh ${USERNAME} \
-    && echo "${USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
-    && mkdir -p ${ODOO_DATA} /commandhistory /workspace \
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && mkdir -p $ODOO_DATA /commandhistory \
     && touch /commandhistory/.zsh_history \
-    && chmod -R 755 ${ODOO_DATA} /commandhistory /workspace \
-    && chown -R ${USERNAME}:${USERNAME} ${ODOO_DATA} /commandhistory /workspace
+    && chown -R $USERNAME:$USERNAME $ODOO_DATA /commandhistory
 
 USER $USERNAME
 WORKDIR $HOME_USER
@@ -157,3 +164,5 @@ VOLUME ["$ODOO_DATA"]
 # Establecer el directorio de trabajo
 WORKDIR /workspace
 
+# Establecer zsh como shell por defecto
+CMD ["zsh"]

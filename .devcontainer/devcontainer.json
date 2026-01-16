@@ -1,7 +1,7 @@
 {
   "name": "Owl Course",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "owl-course",
+  "service": "odoo",
   "workspaceFolder": "/workspace",
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}

@@ -1,5 +1,5 @@
 services:
-  owl-course:
+  odoo:
     container_name: owl-course
     build:
       context: .

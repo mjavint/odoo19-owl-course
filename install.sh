@@ -20,6 +20,11 @@ uv pip install --no-cache-dir -r "$REQUIREMENTS_URL"
 
 echo "✅ All dependencies installed successfully! Environment ready. 🎉"
 
+# Set proper permissions
+echo "🔒 Setting directory permissions..."
+sudo chmod -R 700 ~/.ssh
+echo "✅ Directory permissions configured successfully!"
+
 # Download Odoo server if it doesn't exist
 if [ ! -d "odoo" ]; then
     echo "📥 Downloading Odoo server from GitHub..."
