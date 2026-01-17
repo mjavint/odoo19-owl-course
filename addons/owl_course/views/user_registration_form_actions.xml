@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_user_registration_form" model="ir.actions.client">
+            <field name="name">User Registration Form</field>
+            <field name="tag">user_registration_form</field>
+        </record>
+
+        <menuitem
+            id="menu_user_registration_form"
+            name="User Registration Form"
+            parent="menu_course_component"
+            action="action_user_registration_form" />
+    </data>
+</odoo>

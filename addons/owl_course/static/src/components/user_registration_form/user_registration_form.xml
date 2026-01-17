@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_course.UserRegistrationForm">
+        <div class="container mt-5" style="max-width: 600px;">
+            <div class="card shadow">
+                <!-- Header -->
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fa fa-user-plus me-2" />
+                        User Registration
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form t-on-submit="onSubmit">
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Name *</label>
+                            <input
+                                t-att-class="{'is-invalid': form.hasErrors('name')}"
+                                t-model="form.values.name"
+                                t-on-blur="() => form.setValue('name')"
+                                type="text"
+                                class="form-control" />
+                            <div
+                                t-if="form.hasErrors('name')"
+                                class="invalid-feedback d-block">
+                                <t t-esc="form.errors.name" />
+                            </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label">Email *</label>
+                            <input
+                                t-att-class="{'is-invalid': form.hasErrors('email')}"
+                                t-model="form.values.email"
+                                t-on-blur="() => form.setValue('email')"
+                                type="text"
+                                class="form-control" />
+                            <div
+                                t-if="form.hasErrors('email')"
+                                class="invalid-feedback d-block">
+                                <t t-esc="form.errors.email" />
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password *</label>
+                            <input
+                                t-att-class="{'is-invalid': form.hasErrors('password')}"
+                                t-model="form.values.password"
+                                t-on-blur="() => form.setValue('password')"
+                                type="password"
+                                class="form-control" />
+                            <div
+                                t-if="form.hasErrors('password')"
+                                class="invalid-feedback d-block">
+                                <t t-esc="form.errors.password" />
+                            </div>
+                        </div>
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password *</label>
+                            <input
+                                t-att-class="{'is-invalid': form.hasErrors('confirmPassword')}"
+                                t-model="form.values.confirmPassword"
+                                t-on-blur="() => form.setValue('confirmPassword')"
+                                type="password"
+                                class="form-control" />
+                            <div
+                                t-if="form.hasErrors('confirmPassword')"
+                                class="invalid-feedback d-block">
+                                <t t-esc="form.errors.confirmPassword" />
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <button
+                            t-att-disabled="form.isSubmitting or !form.isValid"
+                            type="submit"
+                            class="btn btn-primary w-100">
+                            <i
+                                t-att-class="form.isSubmitting ? 'fa fa-spinner fa-spin' : 'fa fa-check'"
+                                class="me-1" />
+                            <t t-if="form.isSubmitting">Submitting...</t>
+                            <t t-else="">Register</t>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

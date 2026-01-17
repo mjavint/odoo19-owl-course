@@ -15,6 +15,7 @@
         "views/todo_actions.xml",
         "views/user_actions.xml",
         "views/posts_action.xml",
+        "views/user_registration_form_actions.xml",
     ],
     "assets": {
         "web.assets_backend": [
