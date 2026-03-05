@@ -154,9 +154,10 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions \
     &&git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search \
     && sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions sudo uv zsh-history-substring-search)/' ~/.zshrc \
-    && SNIPPET="autoload -Uz add-zsh-hook; append_history() { fc -W }; add-zsh-hook precmd append_history; export HISTFILE=/commandhistory/.zsh_history" \
-    && echo "$SNIPPET" >> "$HOME_USER/.zshrc" \
     && git config --global --add safe.directory '*'
+
+RUN SNIPPET="autoload -Uz add-zsh-hook; append_history() { fc -W }; add-zsh-hook precmd append_history; export HISTFILE=/commandhistory/.zsh_history" \
+    && echo "$SNIPPET" >> "${HOME_USER}/.zshrc"
 
 # Exponer volumen para datos persistentes de Odoo
 VOLUME ["$ODOO_DATA"]

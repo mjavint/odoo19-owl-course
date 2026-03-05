@@ -14,3 +14,5 @@ dbs
 ocli*
 resources
 uv.lock
+.env
+pruebas

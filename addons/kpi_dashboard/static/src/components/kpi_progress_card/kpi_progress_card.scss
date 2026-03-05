@@ -1,0 +1,9 @@
+.kpi-progress-card {
+    &__bar {
+        height: 8px;
+    }
+
+    .progress-bar {
+        transition: width 0.6s ease;
+    }
+}

@@ -1,0 +1,16 @@
+.kpi-dashboard {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.kpi-dashboard-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    h1 {
+        font-size: 1.75rem;
+    }
+}
+
+.kpi-card--clickable {
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="kpi_dashboard.KpiCard">
+        <div t-attf-class="kpi-card border-start border-4 border-{{cardColor}} rounded shadow-sm bg-white p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- Info: título + valor -->
+                <div>
+                    <div class="text-muted small text-uppercase fw-bold mb-1">
+                        <t t-esc="props.title" />
+                    </div>
+                    <div class="fs-3 fw-bold text-dark">
+                        <t t-esc="displayValue" />
+                    </div>
+                </div>
+                <!-- Ícono circular -->
+                <div
+                    t-attf-class="kpi-card__icon rounded-circle bg-{{cardColor}} bg-opacity-10 d-flex align-items-center justify-content-center">
+                    <i t-attf-class="fa {{cardIcon}} fa-lg text-{{cardColor}}" />
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

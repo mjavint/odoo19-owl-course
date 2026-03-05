@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Client Action kpi dashboard -->
+    <record id="action_kpi_dashboard" model="ir.actions.client">
+        <field name="name">Kpi Dashboard</field>
+        <field name="tag">kpi_dashboard</field>
+    </record>
+
+    <menuitem id="menu_kpi_root" name="Kpi Dashboard" />
+
+    <menuitem
+        id="menu_kpi_dashboard"
+        name="Kpi Dashboard"
+        parent="menu_kpi_root"
+        action="action_kpi_dashboard" />
+</odoo>

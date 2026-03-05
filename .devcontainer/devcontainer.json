@@ -3,9 +3,9 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "odoo",
   "workspaceFolder": "/workspace",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
-  },
+  // "features": {
+  //   "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  // },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -21,7 +21,8 @@
         "usernamehw.errorlens",
         "formulahendry.auto-complete-tag",
         "mrorz.language-gettext",
-        "ArthurLobo.easy-codesnap"
+        "ArthurLobo.easy-codesnap",
+        "mvintg.pg-manager"
       ],
       "settings": {
         "python.languageServer": "None",

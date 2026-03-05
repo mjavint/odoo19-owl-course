@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="kpi_dashboard.KpiProgressCard">
+        <div t-attf-class="kpi-card kpi-progress-card border-start border-4 border-{{cardColor}} rounded shadow-sm bg-white p-3 h-100">
+            <!-- Parte superior: heredada conceptualmente de KpiCard -->
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="text-muted small text-uppercase fw-bold mb-1">
+                        <t t-esc="props.title" />
+                    </div>
+                    <div class="fs-3 fw-bold text-dark">
+                        <t t-esc="displayValue" />
+                    </div>
+                </div>
+                <div
+                    t-attf-class="kpi-card__icon rounded-circle bg-{{cardColor}} bg-opacity-10 d-flex align-items-center justify-content-center">
+                    <i t-attf-class="fa {{cardIcon}} fa-lg text-{{cardColor}}" />
+                </div>
+            </div>
+            <!-- NUEVO: Barra de progreso -->
+            <div class="mt-3">
+                <div class="d-flex justify-content-between small mb-1">
+                    <span t-attf-class="fw-bold {{statusClass}}">
+                        <t t-esc="statusLabel" />
+                    </span>
+                    <span class="text-muted">
+                        <t t-esc="displayValue" />
+                        de
+                        <t t-esc="formattedTarget" />
+                    </span>
+                </div>
+                <div class="progress kpi-progress-card__bar">
+                    <div
+                        t-attf-class="progress-bar {{progressBarClass}}"
+                        t-attf-style="width: {{progressPercent}}%"
+                        t-attf-aria-valuenow="{{progressPercent}}"
+                        role="progressbar"
+                        aria-valuemin="0"
+                        aria-valuemax="100" />
+                </div>
+                <div class="text-end mt-1">
+                    <small class="text-muted fw-bold">
+                        <t t-esc="progressPercent" />
+                        %
+                    </small>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

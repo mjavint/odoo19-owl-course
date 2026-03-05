@@ -1,8 +1,10 @@
-import { Component, useState } from "@odoo/owl";
+/** @odoo-module **/
+
+import { Component, useState } from '@odoo/owl';
 import { registry } from '@web/core/registry';
 
 export class Counter extends Component {
-  static template = "owl_course.Counter";
+  static template = 'owl_course.Counter';
 
   setup() {
     this.state = useState({ count: 0, history: [] });
@@ -11,7 +13,7 @@ export class Counter extends Component {
   increment() {
     this.state.count++;
     this.state.history.push({
-      action: "increment",
+      action: 'increment',
       value: this.state.count,
       timestamp: new Date().toLocaleTimeString(),
     });
@@ -20,7 +22,7 @@ export class Counter extends Component {
   decrement() {
     this.state.count--;
     this.state.history.push({
-      action: "decrement",
+      action: 'decrement',
       value: this.state.count,
       timestamp: new Date().toLocaleTimeString(),
     });
@@ -32,4 +34,4 @@ export class Counter extends Component {
   }
 }
 
-registry.category("actions").add("owl_course.counter", Counter);
+registry.category('actions').add('owl_course.counter', Counter);

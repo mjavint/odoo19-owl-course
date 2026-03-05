@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="kpi_dashboard.KpiTrendCard">
+        <div t-attf-class="kpi-card kpi-trend-card border-start border-4 border-{{cardColor}} rounded shadow-sm bg-white p-3 h-100">
+            <!-- Parte superior: heredada conceptualmente de KpiCard -->
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="text-muted small text-uppercase fw-bold mb-1">
+                        <t t-esc="props.title" />
+                    </div>
+                    <div class="fs-3 fw-bold text-dark">
+                        <t t-esc="displayValue" />
+                    </div>
+                </div>
+                <div
+                    t-attf-class="kpi-card__icon rounded-circle bg-{{cardColor}} bg-opacity-10 d-flex align-items-center justify-content-center">
+                    <i t-attf-class="fa {{cardIcon}} fa-lg text-{{cardColor}}" />
+                </div>
+            </div>
+            <!-- NUEVO: Indicador de tendencia -->
+            <hr class="my-2 opacity-25" />
+            <div class="d-flex align-items-center justify-content-between">
+                <small class="text-muted">
+                    <t t-esc="periodLabel" />
+                </small>
+                <span t-attf-class="badge {{trendBadgeClass}} bg-opacity-10 {{trendColorClass}} fw-bold">
+                    <i t-attf-class="fa {{trendIcon}} me-1" />
+                    <t t-esc="trendPercent" />
+                    %
+                </span>
+            </div>
+        </div>
+    </t>
+</templates>

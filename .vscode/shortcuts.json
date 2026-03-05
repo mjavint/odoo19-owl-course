@@ -5,7 +5,7 @@
       "-d",
       "v19_owl_course",
       "-u",
-      "owl_course"
+      "base"
     ],
     "odooBinPath": "/workspace/odoo/odoo-bin",
     "odooConfPath": "/workspace/odoo.conf",

@@ -1,9 +1,10 @@
 services:
   odoo:
     container_name: owl-course
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: mjavint/odoodev:3.12-slim-bookworm
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     volumes:
       - ..:/workspace
       - odoo-data:/var/lib/odoo
@@ -23,14 +24,14 @@ services:
     environment:
       - POSTGRES_PASSWORD=admin
     volumes:
-      - pgdb17-data:/var/lib/postgresql/data
+      - pgdb-data:/var/lib/postgresql/data
     restart: unless-stopped
     networks:
       - shared-net
 
 volumes:
   odoo-data:
-  pgdb17-data:
+  pgdb-data:
 
 networks:
   shared-net:
